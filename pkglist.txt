@@ -26,6 +26,9 @@ npm
 nvidia-open-dkms
 nvidia-utils
 pacman-contrib
+python-jinja
+python-pip
+python-yaml
 qt5-wayland
 qt6-wayland
 rebuild-detector

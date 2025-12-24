@@ -1,0 +1,195 @@
+# 💎 LIQUID FUTURE LUXURY - Ultimate Edition
+# Mood: Cyber-Brutalist, Neon, Fluid, Precision.
+# Designed for: Advanced Full-Stack Development & Cloud Engineering
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# --- 1. STRUTTURA DEL PROMPT ---
+# Sinistra: Contesto Spaziale (Dove sono, Git, Linguaggio, Container)
+format = """
+[╭─](primary)$os$directory$git_branch$git_status$docker_context$kubernetes\
+$c$cmake$cpp$dotnet$elixir$elm$erlang$golang$gradle$haskell$java$julia$kotlin$lua$nim$nodejs$php$python$ruby$rust$scala$swift$zig\
+$conda$memory_usage$sudo
+[╰─](primary)$character"""
+
+# Destra: Contesto Temporale (Durata, Job, Orario)
+right_format = """$cmd_duration$jobs$time"""
+
+# Configurazioni globali
+command_timeout = 2000 # 2s timeout per evitare lag su repo giganti
+add_newline = true
+
+# --- 2. PALETTE: DEEP NEON VOID ---
+palette = "liquid_future"
+
+[palettes.liquid_future]
+void = "#07000C"
+primary = "#7D00E0"       # Struttura Ossea (Linee)
+primary_glow = "#CD6AFF"  # Focus (Git Branch, Utente)
+secondary = "#5628F3"     # Strumenti (Linguaggi)
+secondary_glow = "#9D81FE" # Dettagli Strumenti
+dimmed = "#605a66"        # Separatori / Info passive
+white = "#FEFCFF"         # Testo puro
+error = "#FF0055"         # Errore / Root
+
+# --- 3. SISTEMA OPERATIVO ---
+[os]
+disabled = false
+style = "bold white"
+format = "[$symbol]($style)"
+
+[os.symbols]
+Arch = " "
+Windows = " "
+Macos = " "
+Linux = " "
+Ubuntu = " "
+Debian = " "
+
+# --- 4. DIRECTORY (Tech Precision) ---
+[directory]
+style = "bold white"
+read_only = " "
+truncation_length = 4
+truncation_symbol = "…/"
+# Le parentesi quadre scure [::] creano un contenitore "ingegneristico"
+format = " [::](dimmed)[$path]($style)[$read_only]($style) "
+
+# --- 5. GIT (Liquid Flow) ---
+[git_branch]
+symbol = " "
+style = "primary_glow"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "secondary_glow"
+# Usiamo glifi geometrici invece di emoji per massima pulizia
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "🏳 "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = " "
+stashed = " "
+modified = " "
+staged = " "
+renamed = " "
+deleted = " "
+
+# --- 6. CONTAINER & CLOUD (Advanced Projects) ---
+[docker_context]
+symbol = " "
+style = "secondary_glow"
+format = "via [$symbol$context]($style) "
+
+[kubernetes]
+symbol = "☸ "
+style = "secondary_glow"
+format = "on [$symbol$context($namespace )]($style) "
+
+[aws]
+symbol = " "
+style = "secondary_glow"
+format = "on [$symbol($profile )($region )]($style)"
+
+# --- 7. LINGUAGGI (Uniformità Totale) ---
+# Tutti i linguaggi usano la palette 'secondary_glow' per coerenza visiva.
+# Nessun arcobaleno. Solo stile Brand.
+
+[nodejs]
+symbol = " "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[python]
+symbol = "🐍 "
+style = "secondary_glow"
+# Fix sintassi: le parentesi tonde sono testo normale qui
+format = "via [$symbol($version )($virtualenv )]($style)"
+
+[rust]
+symbol = "🦀 "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[golang]
+symbol = "🐹 "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[lua]
+symbol = "🌙 "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[php]
+symbol = "🐘 "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[java]
+symbol = "☕ "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[kotlin]
+symbol = "🅺 "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[c]
+symbol = " "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[cpp]
+symbol = " "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[zig]
+symbol = "⚡ "
+style = "secondary_glow"
+format = "via [$symbol($version )]($style)"
+
+[package]
+symbol = "📦 "
+style = "dimmed"
+format = "is [$symbol$version]($style) "
+
+# --- 8. UTILITIES ---
+[memory_usage]
+disabled = false
+threshold = 75
+symbol = "🧠 "
+style = "bold error"
+format = "[$symbol${ram}]($style) "
+
+[sudo]
+disabled = false
+symbol = "💀"
+style = "bold error"
+format = "[$symbol]($style) "
+
+# --- 9. INPUT & TIME (Right Side) ---
+[character]
+success_symbol = "[⚡](primary_glow)"
+error_symbol = "[⚡](error)"
+vimcmd_symbol = "[N](secondary_glow)"
+
+[cmd_duration]
+min_time = 2000
+style = "dimmed"
+format = "took [$duration]($style) "
+
+[jobs]
+symbol = "⚙️"
+style = "dimmed"
+format = " [$symbol$number]($style) "
+
+[time]
+disabled = false
+style = "dimmed"
+format = "[$time]($style)"
+time_format = "%R"

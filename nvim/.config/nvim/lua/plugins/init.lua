@@ -5,8 +5,7 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
-  {
+ {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
@@ -22,16 +21,21 @@ return {
       vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true})
     end,
   },
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+
+  -- YAML --
+  {
+    "b0o/schemastore.nvim",
+    lazy = true,
+  },
+
+  -- YAML Linting --
+  { 
+
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile"},
+    config = function()
+      require "configs.lint"
+    end,
+  }
 }

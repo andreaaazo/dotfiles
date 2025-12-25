@@ -2,7 +2,7 @@ ui:
   primary: "#7D00E0"
   secondary: "#5628F3"
   black: &ui-black "#07000C"
-  white: &ui-white "#FEFCFF")
+  white: &ui-white "#FEFCFF"
   primary-light: &ui-primary-light "#CD6AFF"
   secondary-light: "#9D81FE"
 

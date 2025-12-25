@@ -1,14 +1,17 @@
+vim.opt.clipboard = "unnamedplus" -- Use system clipboard
+
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre',
-    opts = require "configs.conform",
+    event = "BufWritePre",
+    cmd = { "ConformInfo" },
+    opts = require("configs.conform"),
   },
 
- {
+  {
     "neovim/nvim-lspconfig",
     config = function()
-      require "configs.lspconfig"
+      require("configs.lspconfig")
     end,
   },
 
@@ -18,10 +21,9 @@ return {
     lazy = false,
     config = function()
       vim.g.copilot_no_tab_map = true
-      vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true})
+      vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
     end,
   },
-
 
   -- YAML --
   {
@@ -30,12 +32,12 @@ return {
   },
 
   -- YAML Linting --
-  { 
+  {
 
     "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufNewFile"},
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require "configs.lint"
+      require("configs.lint")
     end,
-  }
+  },
 }

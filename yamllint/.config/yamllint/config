@@ -1,0 +1,41 @@
+extends : default
+
+ignore: |
+  .git/
+  node_modules/
+  dist/
+  build/
+  vendor/
+
+rules:
+  document-start: disable
+
+  indentation:
+    spaces: 2
+    indent-sequences: consistent
+    level: error
+
+  line-length:
+    max: 120
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+    level: error
+
+  trailing-spaces: {level: error}
+  new-line-at-end-of-file: {level: error}
+  new-lines:
+    type: unix
+    level: error
+
+  key-duplicates: {level: error}
+
+  comments:
+    require-starting-space: true
+    min-spaces-from-content: 2
+    level: error
+  comments-indentation: {level: error}
+
+  truthy:
+    allowed-values: ["true", "false"]
+    check-keys: true
+    level: error

@@ -1,14 +1,31 @@
 local options = {
-	formatters_by_ft = {
-		lua = { "stylua" },
-		json = { "prettier" },
-		yaml = { "prettier" },
-		yml = { "prettier" },
-	},
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_fallback = true,
-	},
+  formatters_by_ft = {
+    lua = { "stylua" },
+    json = { "prettier" },
+    yaml = { "prettier" },
+    yml = { "prettier" },
+    python = { "ruff_organize_imports", "ruff_fix", "black" },
+  },
+
+  formatters = {
+    prettier = {
+      prepend_args = {
+        "--config",
+        vim.fn.expand("~/.config/prettier/.prettierrc.json"),
+      },
+    },
+    stylua = {
+      prepend_args = {
+        "--config-path",
+        vim.fn.expand("~/.config/stylua/stylua.toml"),
+      },
+    },
+  },
+
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_fallback = false,
+  },
 }
 
 return options

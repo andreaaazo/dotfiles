@@ -1,0 +1,75 @@
+[tool.ruff]
+required-version = ">=0.9.8"
+target-version = "py311"
+line-length = 88
+indent-width = 4
+respect-gitignore = true
+show-fixes = true
+unsafe-fixes = false
+extend-exclude = [
+  ".venv",
+  "venv",
+  "build",
+  "dist",
+  "__pypackages__",
+  ".mypy_cache",
+  ".pytest_cache",
+  ".ruff_cache",
+]
+
+[tool.ruff.lint]
+select = [
+  "E", "F", "W",   # pycodestyle/pyflakes
+  "I",             # isort
+  "B",             # bugbear
+  "UP",            # pyupgrade
+  "N",             # pep8-naming
+  "S",             # bandit (security)
+  "C4",            # comprehensions
+  "SIM",           # simplify
+  "PTH",           # pathlib
+  "TRY",           # tryceratops
+  "RET",           # return
+  "ARG",           # unused arguments
+  "DTZ",           # datetime timezone
+  "G",             # logging format
+  "PIE",           # flake8-pie
+  "PERF",          # performance
+  "RUF",           # ruff-specific
+  "PL",            # pylint
+  "C90",           # mccabe complexity
+  "D",             # docstrings
+]
+
+ignore = [
+  "E501",  # line length handled by black
+  "D203",  # incompatible with D211
+  "D213",  # incompatible with D212
+]
+
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+lines-after-imports = 2
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**/*.py" = ["S101", "D", "PLR2004"]
+"**/migrations/**/*.py" = ["D", "E402", "N999"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+skip-magic-trailing-comma = false
+docstring-code-format = true

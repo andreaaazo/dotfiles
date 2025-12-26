@@ -5,12 +5,13 @@ scan_timeout = 30
 command_timeout = 500
 
 format = """
-[░▒▓](fg:{{ terminal['bright-black'] }})\
+[█](fg:{{ terminal['black'] }})\
 $os\
 $directory\
 $git_state\
 $git_branch\
 $git_status\
+[](fg:{{ terminal['black'] }})\
 $fill\ 
 $docker_context\
 $kubernetes\
@@ -31,6 +32,7 @@ $swift\
 $haskell\
 $elixir\
 $crystal\
+[•](fg:{{ terminal['bright-black'] }})\
 $cmd_duration\
 $time\
 \n$character
@@ -38,11 +40,11 @@ $time\
 
 [os]
 disabled = false
-style = "bg: {{ terminal['black'] }} fg:{{ terminal['blue'] }}"
+style = "bg:{{ terminal['black'] }} fg:{{ terminal['blue'] }}"
 format = "[ 󰣇 ]($style)"
 
 [directory]
-style = "bg: {{ terminal['black'] }} fg:{{ terminal['cyan'] }}"
+style = "bg:{{ terminal['black'] }} fg:{{ terminal['cyan'] }}"
 truncation_length = 1
 truncation_symbol = ""
 truncate_to_repo = false
@@ -50,32 +52,30 @@ home_symbol = "~"
 format = "[ $path ]($style)"
 
 [git_state]
-style = "bg: {{ terminal['red'] }} fg:{{ terminal['black'] }}"
+style = "bg:{{ terminal['red'] }} fg:{{ terminal['black'] }}"
 format = "[  $state( $progress_current/$progress_total ) ]($style)"
 
 [git_branch]
-style = "bg: {{ terminal['black'] }} fg:{{ terminal['magenta'] }}"
+style = "bg:{{ terminal['black'] }} fg:{{ terminal['magenta'] }}"
 symbol = ""
 format = "[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg: {{ terminal['black'] }} fg:{{ terminal['yellow'] }}"
+conflicted  = "[ ≠${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['bright-red'] }})"
+ahead       = "[ ⇡${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['bright-blue'] }})"
+behind      = "[ ⇣${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['blue'] }})"
+diverged    = "[ ⇕⇡${ahead_count}⇣${behind_count} ](bg:{{ terminal['black'] }} fg:{{ terminal['bright-magenta'] }})"
+up_to_date  = "[ · ](bg:{{ terminal['black'] }} fg:{{ terminal['bright-black'] }})"
 
-conflicted  = "[≠${count}](fg:{{ terminal['bright-red'] }})"
-ahead       = "[⇡${count}](fg:{{ terminal['bright-blue'] }})"
-behind      = "[⇣${count}](fg:{{ terminal['blue'] }})"
-diverged    = "[⇕⇡${ahead_count}⇣${behind_count}](fg:{{ terminal['bright-magenta'] }})"
-up_to_date  = "[·](fg:{{ terminal['bright-black'] }})"
+untracked   = "[ ?${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['bright-cyan'] }})"
+stashed     = "[ *${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['magenta'] }})"
+modified    = "[ !${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['yellow'] }})"
+staged      = "[ +${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['green'] }})"
+renamed     = "[ »${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['cyan'] }})"
+deleted     = "[ ✘${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['red'] }})"
+typechanged = "[ ~${count} ](bg:{{ terminal['black'] }} fg:{{ terminal['bright-yellow'] }})"
 
-untracked   = "[?${count}](fg:{{ terminal['bright-cyan'] }})"
-stashed     = "[*${count}](fg:{{ terminal['magenta'] }})"
-modified    = "[!${count}](fg:{{ terminal['yellow'] }})"
-staged      = "[+${count}](fg:{{ terminal['green'] }})"
-renamed     = "[»${count}](fg:{{ terminal['cyan'] }})"
-deleted     = "[✘${count}](fg:{{ terminal['red'] }})"
-typechanged = "[~${count}](fg:{{ terminal['bright-yellow'] }})"
-
-format = "[$all_status$ahead_behind]($style)"
+format = "$all_status$ahead_behind"
 
 [docker_context]
 style = "fg:{{ terminal['cyan'] }}"
@@ -175,15 +175,15 @@ format = "[$symbol$version]($style) "
 min_time = 0
 show_milliseconds = true
 style = "fg:{{ terminal['cyan'] }}"
-format = "[ $duration ]($style)"
+format = "[ took $duration]($style)"
 
 [time]
 disabled = false
 time_format = "%H:%M"
 style = "fg:{{ terminal['cyan'] }}"
-format = "[ $time ]($style)"
+format = "[ at $time ]($style)"
 
 [character]
-success_symbol = "[▸](fg:{{ terminal['blue'] }})[●](fg:{{ terminal['bright-magenta'] }}) "
-error_symbol   = "[▸](fg:{{ terminal['red'] }})[●](fg:{{ terminal['bright-magenta'] }}) "
-vimcmd_symbol  = "[◂](fg:{{ terminal['cyan'] }})[●](fg:{{ terminal['bright-magenta'] }}) "
+success_symbol = "[●](fg:{{ terminal['bright-magenta'] }})"
+error_symbol   = "[▲](fg:{{ terminal['red'] }})"
+vimcmd_symbol  = "[■](fg:{{ terminal['cyan'] }})"

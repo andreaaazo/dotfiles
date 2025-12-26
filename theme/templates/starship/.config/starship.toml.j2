@@ -1,20 +1,17 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
-add_newline = false
+add_newline = true
 scan_timeout = 30
-command_timeout = 800
+command_timeout = 500
 
 format = """
-[░▒▓](fg:{{ terminal['bright-black'] }}) \
+[░▒▓](fg:{{ terminal['bright-black'] }})\
 $os\
-$username\
-$hostname\
 $directory\
+$git_state\
 $git_branch\
 $git_status\
-$git_state\
-$git_metrics\
-$fill\
+$fill\ 
 $docker_context\
 $kubernetes\
 $aws\
@@ -31,67 +28,38 @@ $lua\
 $ruby\
 $dotnet\
 $swift\
+$haskell\
+$elixir\
+$crystal\
 $cmd_duration\
-$memory_usage\
-$jobs\
-$status\
-$battery\
 $time\
 \n$character
 """
 
-# Campo topografico: fluido ma governato
-[fill]
-symbol = "┈"
-style = "fg:{{ terminal['bright-black'] }}"
-
-# -------------------------
-# Core identity (left)
-# -------------------------
 [os]
 disabled = false
-style = "bg:{{ terminal['black'] }} fg:{{ terminal['blue'] }}"
-format = "[ $symbol ]($style) "
-[os.symbols]
-Arch = "󰣇"
-
-[username]
-disabled = false
-show_always = false
-style_user = "bg:{{ terminal['black'] }} fg:{{ terminal['bright-cyan'] }}"
-style_root = "bg:{{ terminal['black'] }} fg:{{ terminal['bright-red'] }} bold"
-format = "[ $user ]($style) "
-
-[hostname]
-disabled = false
-ssh_only = true
-style = "bg:{{ terminal['black'] }} fg:{{ terminal['bright-black'] }}"
-format = "[ $hostname ]($style) "
+style = "bg: {{ terminal['black'] }} fg:{{ terminal['blue'] }}"
+format = "[ 󰣇 ]($style)"
 
 [directory]
-style = "bg:{{ terminal['black'] }} fg:{{ terminal['bright-white'] }}"
-read_only = " "
-read_only_style = "bg:{{ terminal['black'] }} fg:{{ terminal['red'] }}"
-format = "[ $path ]($style)[$read_only]($read_only_style) "
-truncation_length = 3
-truncation_symbol = "…/"
+style = "bg: {{ terminal['black'] }} fg:{{ terminal['cyan'] }}"
+truncation_length = 1
+truncation_symbol = ""
+truncate_to_repo = false
 home_symbol = "~"
-truncate_to_repo = true
-use_os_path_sep = true
+format = "[ $path ]($style)"
 
-# (tolte le substitutions con icone: ora solo nomi directory, pulito)
+[git_state]
+style = "bg: {{ terminal['red'] }} fg:{{ terminal['black'] }}"
+format = "[  $state( $progress_current/$progress_total ) ]($style)"
 
-# -------------------------
-# Git (core = gemma, status = controllo)
-# -------------------------
 [git_branch]
-symbol = ""
-style = "bg:{{ terminal['black'] }} fg:{{ terminal['blue'] }}"
-format = "[ $symbol $branch ]($style) "
+style = "bg: {{ terminal['black'] }} fg:{{ terminal['magenta'] }}"
+symbol = ""
+format = "[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg:{{ terminal['black'] }} fg:{{ terminal['bright-black'] }}"
-format = "[ $all_status$ahead_behind ]($style) "
+style = "bg: {{ terminal['black'] }} fg:{{ terminal['yellow'] }}"
 
 conflicted  = "[≠${count}](fg:{{ terminal['bright-red'] }})"
 ahead       = "[⇡${count}](fg:{{ terminal['bright-blue'] }})"
@@ -107,20 +75,8 @@ renamed     = "[»${count}](fg:{{ terminal['cyan'] }})"
 deleted     = "[✘${count}](fg:{{ terminal['red'] }})"
 typechanged = "[~${count}](fg:{{ terminal['bright-yellow'] }})"
 
-[git_state]
-style = "bg:{{ terminal['black'] }} fg:{{ terminal['yellow'] }}"
-format = "[ $state( $progress_current/$progress_total) ]($style) "
+format = "[$all_status$ahead_behind]($style)"
 
-[git_metrics]
-disabled = false
-only_nonzero_diffs = true
-added_style = "bg:{{ terminal['black'] }} fg:{{ terminal['green'] }}"
-deleted_style = "bg:{{ terminal['black'] }} fg:{{ terminal['red'] }}"
-format = "[ +$added ]($added_style)[ -$deleted ]($deleted_style) "
-
-# -------------------------
-# Context / Cloud / IaC (secondari, coerenti)
-# -------------------------
 [docker_context]
 style = "fg:{{ terminal['cyan'] }}"
 format = "[ $context]($style) "
@@ -150,9 +106,6 @@ style = "fg:{{ terminal['white'] }}"
 symbol = "󰏗 "
 format = "[$symbol$version]($style) "
 
-# -------------------------
-# Languages (uniformi = calm; icone ok)
-# -------------------------
 [nodejs]
 style = "fg:{{ terminal['cyan'] }}"
 symbol = " "
@@ -203,57 +156,33 @@ style = "fg:{{ terminal['cyan'] }}"
 symbol = " "
 format = "[$symbol$version]($style) "
 
-# -------------------------
-# Utilities (silenziose)
-# -------------------------
+[haskell]
+style = "fg:{{ terminal['cyan'] }}"
+symbol = " "
+format = "[$symbol$version]($style) "
+
+[elixir]
+style = "fg:{{ terminal['cyan'] }}"
+symbol = " "
+format = "[$symbol$version]($style) "
+
+[crystal]
+style = "fg:{{ terminal['cyan'] }}"
+symbol = "󰚩 "
+format = "[$symbol$version]($style) "
+
 [cmd_duration]
-min_time = 750
-style = "fg:{{ terminal['bright-black'] }}"
-format = "[ $duration]($style) "
+min_time = 0
+show_milliseconds = true
+style = "fg:{{ terminal['cyan'] }}"
+format = "[ $duration ]($style)"
 
-[memory_usage]
-disabled = false
-threshold = 75
-style = "fg:{{ terminal['bright-black'] }}"
-format = "[󰍛 ${ram}( | ${swap})]($style) "
-
-[jobs]
-style = "fg:{{ terminal['bright-black'] }}"
-symbol = "󰜎 "
-format = "[$symbol$number]($style) "
-
-[status]
-disabled = false
-style = "fg:{{ terminal['red'] }}"
-format = "[✖ $status]($style) "
-
-[battery]
-disabled = false
-format = "[$symbol$percentage]($style) "
-charging_symbol = "󰂄 "
-discharging_symbol = "󰂃 "
-full_symbol = "󰁹 "
-unknown_symbol = "󰂑 "
-empty_symbol = "󰂎 "
-
-[[battery.display]]
-threshold = 10
-style = "fg:{{ terminal['red'] }}"
-[[battery.display]]
-threshold = 30
-style = "fg:{{ terminal['yellow'] }}"
-[[battery.display]]
-threshold = 100
-style = "fg:{{ terminal['green'] }}"
-
-# FIX: niente nesting, formato valido
 [time]
 disabled = false
-time_format = "%R"
-style = "fg:{{ terminal['bright-magenta'] }}"
-format = "[ $time]($style) "
+time_format = "%H:%M"
+style = "fg:{{ terminal['cyan'] }}"
+format = "[ $time ]($style)"
 
-# Signature
 [character]
 success_symbol = "[▸](fg:{{ terminal['blue'] }})[●](fg:{{ terminal['bright-magenta'] }}) "
 error_symbol   = "[▸](fg:{{ terminal['red'] }})[●](fg:{{ terminal['bright-magenta'] }}) "

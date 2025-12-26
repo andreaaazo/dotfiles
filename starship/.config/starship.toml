@@ -1,20 +1,17 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
-add_newline = false
+add_newline = true
 scan_timeout = 30
-command_timeout = 800
+command_timeout = 500
 
 format = """
-[░▒▓](fg:#78728B) \
+[░▒▓](fg:#78728B)\
 $os\
-$username\
-$hostname\
 $directory\
+$git_state\
 $git_branch\
 $git_status\
-$git_state\
-$git_metrics\
-$fill\
+$fill\ 
 $docker_context\
 $kubernetes\
 $aws\
@@ -31,67 +28,38 @@ $lua\
 $ruby\
 $dotnet\
 $swift\
+$haskell\
+$elixir\
+$crystal\
 $cmd_duration\
-$memory_usage\
-$jobs\
-$status\
-$battery\
 $time\
 \n$character
 """
 
-# Campo topografico: fluido ma governato
-[fill]
-symbol = "┈"
-style = "fg:#78728B"
-
-# -------------------------
-# Core identity (left)
-# -------------------------
 [os]
 disabled = false
-style = "bg:#2A2633 fg:#A454FF"
-format = "[ $symbol ]($style) "
-[os.symbols]
-Arch = "󰣇"
-
-[username]
-disabled = false
-show_always = false
-style_user = "bg:#2A2633 fg:#A591FF"
-style_root = "bg:#2A2633 fg:#F48FFF bold"
-format = "[ $user ]($style) "
-
-[hostname]
-disabled = false
-ssh_only = true
-style = "bg:#2A2633 fg:#78728B"
-format = "[ $hostname ]($style) "
+style = "bg: #2A2633 fg:#A454FF"
+format = "[ 󰣇 ]($style)"
 
 [directory]
-style = "bg:#2A2633 fg:#FEFCFF"
-read_only = " "
-read_only_style = "bg:#2A2633 fg:#F056FF"
-format = "[ $path ]($style)[$read_only]($read_only_style) "
-truncation_length = 3
-truncation_symbol = "…/"
+style = "bg: #2A2633 fg:#9780FF"
+truncation_length = 1
+truncation_symbol = ""
+truncate_to_repo = false
 home_symbol = "~"
-truncate_to_repo = true
-use_os_path_sep = true
+format = "[ $path ]($style)"
 
-# (tolte le substitutions con icone: ora solo nomi directory, pulito)
+[git_state]
+style = "bg: #F056FF fg:#2A2633"
+format = "[  $state( $progress_current/$progress_total ) ]($style)"
 
-# -------------------------
-# Git (core = gemma, status = controllo)
-# -------------------------
 [git_branch]
-symbol = ""
-style = "bg:#2A2633 fg:#A454FF"
-format = "[ $symbol $branch ]($style) "
+style = "bg: #2A2633 fg:#B167E9"
+symbol = ""
+format = "[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg:#2A2633 fg:#78728B"
-format = "[ $all_status$ahead_behind ]($style) "
+style = "bg: #2A2633 fg:#E086F9"
 
 conflicted  = "[≠${count}](fg:#F48FFF)"
 ahead       = "[⇡${count}](fg:#AB61FF)"
@@ -107,20 +75,8 @@ renamed     = "[»${count}](fg:#9780FF)"
 deleted     = "[✘${count}](fg:#F056FF)"
 typechanged = "[~${count}](fg:#E896FF)"
 
-[git_state]
-style = "bg:#2A2633 fg:#E086F9"
-format = "[ $state( $progress_current/$progress_total) ]($style) "
+format = "[$all_status$ahead_behind]($style)"
 
-[git_metrics]
-disabled = false
-only_nonzero_diffs = true
-added_style = "bg:#2A2633 fg:#8977D9"
-deleted_style = "bg:#2A2633 fg:#F056FF"
-format = "[ +$added ]($added_style)[ -$deleted ]($deleted_style) "
-
-# -------------------------
-# Context / Cloud / IaC (secondari, coerenti)
-# -------------------------
 [docker_context]
 style = "fg:#9780FF"
 format = "[ $context]($style) "
@@ -150,9 +106,6 @@ style = "fg:#DDCEF3"
 symbol = "󰏗 "
 format = "[$symbol$version]($style) "
 
-# -------------------------
-# Languages (uniformi = calm; icone ok)
-# -------------------------
 [nodejs]
 style = "fg:#9780FF"
 symbol = " "
@@ -203,57 +156,33 @@ style = "fg:#9780FF"
 symbol = " "
 format = "[$symbol$version]($style) "
 
-# -------------------------
-# Utilities (silenziose)
-# -------------------------
+[haskell]
+style = "fg:#9780FF"
+symbol = " "
+format = "[$symbol$version]($style) "
+
+[elixir]
+style = "fg:#9780FF"
+symbol = " "
+format = "[$symbol$version]($style) "
+
+[crystal]
+style = "fg:#9780FF"
+symbol = "󰚩 "
+format = "[$symbol$version]($style) "
+
 [cmd_duration]
-min_time = 750
-style = "fg:#78728B"
-format = "[ $duration]($style) "
+min_time = 0
+show_milliseconds = true
+style = "fg:#9780FF"
+format = "[ $duration ]($style)"
 
-[memory_usage]
-disabled = false
-threshold = 75
-style = "fg:#78728B"
-format = "[󰍛 ${ram}( | ${swap})]($style) "
-
-[jobs]
-style = "fg:#78728B"
-symbol = "󰜎 "
-format = "[$symbol$number]($style) "
-
-[status]
-disabled = false
-style = "fg:#F056FF"
-format = "[✖ $status]($style) "
-
-[battery]
-disabled = false
-format = "[$symbol$percentage]($style) "
-charging_symbol = "󰂄 "
-discharging_symbol = "󰂃 "
-full_symbol = "󰁹 "
-unknown_symbol = "󰂑 "
-empty_symbol = "󰂎 "
-
-[[battery.display]]
-threshold = 10
-style = "fg:#F056FF"
-[[battery.display]]
-threshold = 30
-style = "fg:#E086F9"
-[[battery.display]]
-threshold = 100
-style = "fg:#8977D9"
-
-# FIX: niente nesting, formato valido
 [time]
 disabled = false
-time_format = "%R"
-style = "fg:#C77DFF"
-format = "[ $time]($style) "
+time_format = "%H:%M"
+style = "fg:#9780FF"
+format = "[ $time ]($style)"
 
-# Signature
 [character]
 success_symbol = "[▸](fg:#A454FF)[●](fg:#C77DFF) "
 error_symbol   = "[▸](fg:#F056FF)[●](fg:#C77DFF) "

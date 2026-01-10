@@ -19,14 +19,13 @@ linux-lts
 linux-lts-headers
 lua51
 luarocks
+mpvpaper
 neovim
 networkmanager
 nodejs
-npm
 nvidia-open-dkms
 nvidia-utils
 pacman-contrib
-python-jinja
 python-pip
 python-yaml
 qt5-wayland
@@ -38,6 +37,7 @@ snap-pac
 snapper
 starship
 stow
+tree
 ttf-jetbrains-mono-nerd
 ufw
 unzip

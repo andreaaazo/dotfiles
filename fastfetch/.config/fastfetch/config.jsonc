@@ -1,0 +1,122 @@
+{
+    "$schema":"https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo":{
+       "source":"/home/Andrea/.config/fastfetch/assets/logo.txt",
+       "type":"file",
+       "height":14,
+       "padding":{
+          "top":5,
+          "right":15,
+          "left":5
+},
+       "color":{
+          "1":"38;2;254;252;255",
+          "2":"38;2;205;106;255"
+       }
+    },
+    "display":{
+       "separator":" "
+    },
+    "modules":[
+       "break",
+       {
+          "type":"custom",
+          "format":"\u001b[38;2;7;0;12m■  \u001b[38;2;125;0;224m■  \u001b[38;2;205;106;255m■  \u001b[38;2;86;40;243m■  \u001b[38;2;157;129;254m■  \u001b[38;2;254;252;255m■"
+       },
+       "break",
+       {
+          "type":"title",
+          "keyWidth":10,
+          "color":{
+             "user":"38;2;205;106;255",
+             "at":"38;2;254;252;255",
+             "host":"38;2;205;106;255"
+          }
+       },
+       "break",
+       {
+          "type":"os",
+          "key":"\ue62a ",
+          "keyColor":"38;2;206;107;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"shell",
+          "key":" ",
+          "keyColor":"38;2;201;110;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       "break",
+       {
+          "type":"display",
+          "format":"{6} @ {1} x {2}",
+          "key":" ",
+          "keyColor":"38;2;196;113;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"board",
+          "format":"{1}",
+          "key":"\ueabe ",
+          "keyColor":"38;2;191;115;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"cpu",
+          "key":" ",
+          "format":"{1} @ {6}",
+          "keyColor":"38;2;185;117;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"gpu",
+          "format":"{2} {4}",
+          "key":"󰢮 ",
+          "hideType":"integrated",
+          "keyColor":"38;2;180;120;255",
+          "outputColor":"38;2;254;252;255",
+          "driverSpecific":false,
+          "temp":false
+       },
+       {
+          "type":"physicalmemory",
+          "format":"{8} {5} {2} @ {3} MHz",
+          "key":" ",
+          "keyColor":"38;2;175;122;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"disk",
+          "format":"{9} {2} ({3})",
+          "key":"󰋊 ",
+          "keyColor":"38;2;170;124;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       "break",
+       {
+          "type":"uptime",
+          "key":" ",
+          "keyColor":"38;2;166;126;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"packages",
+          "key":" ",
+          "keyColor":"38;2;161;127;255",
+          "outputColor":"38;2;254;252;255"
+       },
+       {
+          "type":"media",
+          "key":" ",
+          "keyColor":"38;2;156;129;254",
+          "outputColor":"38;2;254;252;255"
+       },
+       "break",
+       {
+          "type":"custom",
+          "format":"\u001b[38;2;7;0;12m■  \u001b[38;2;125;0;224m■  \u001b[38;2;205;106;255m■  \u001b[38;2;86;40;243m■  \u001b[38;2;157;129;254m■  \u001b[38;2;254;252;255m■"
+       },
+       "break",
+       "break"
+    ]
+ }

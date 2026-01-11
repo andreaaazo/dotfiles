@@ -45,7 +45,7 @@ format = "[ 󰣇 ]($style)"
 
 [directory]
 style = "bg:#2A2633 fg:#9780FF"
-truncation_length = 1
+truncation_length = 2
 truncation_symbol = ""
 truncate_to_repo = false
 home_symbol = "~"

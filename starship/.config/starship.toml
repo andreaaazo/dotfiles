@@ -32,7 +32,6 @@ $swift\
 $haskell\
 $elixir\
 $crystal\
-[•](fg:#78728B)\
 $cmd_duration\
 $time\
 \n$character
@@ -76,6 +75,9 @@ deleted     = "[ ✘${count} ](bg:#2A2633 fg:#F056FF)"
 typechanged = "[ ~${count} ](bg:#2A2633 fg:#E896FF)"
 
 format = "$all_status$ahead_behind"
+
+[fill]
+symbol = " "
 
 [docker_context]
 style = "fg:#9780FF"
@@ -175,13 +177,13 @@ format = "[$symbol$version]($style) "
 min_time = 0
 show_milliseconds = true
 style = "fg:#9780FF"
-format = "[ took $duration]($style)"
+format = "[ took $duration at]($style)"
 
 [time]
 disabled = false
 time_format = "%H:%M"
 style = "fg:#9780FF"
-format = "[ at $time ]($style)"
+format = "[ $time ]($style)"
 
 [character]
 success_symbol = "[●](fg:#C77DFF)"

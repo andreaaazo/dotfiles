@@ -1,9 +1,8 @@
 #!/bin/bash
 
 killall mpvpaper 2>/dev/null
-sleep 0.5
 
-VIDEO_PATH="$HOME/Pictures/Wallpapers/Blue_Queen.mp4"
+VIDEO_PATH="$HOME/Pictures/Wallpapers/black_hole.mp4"
 
 MONITOR="*"
 

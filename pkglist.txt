@@ -27,6 +27,7 @@ networkmanager
 nodejs
 nvidia-open-dkms
 nvidia-utils
+openssh
 pacman-contrib
 pipewire
 pipewire-alsa

@@ -13,6 +13,8 @@ export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export PATH="$HOME/.local/bin:$PATH"
+
 
 [[ -d "$XDG_DATA_HOME/zsh" ]] || mkdir -p "$XDG_DATA_HOME/zsh"
 [[ -d "$XDG_CACHE_HOME/zsh" ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
@@ -28,6 +30,7 @@ alias clear="clear && fastfetch"
 alias ls="ls --all --color=auto"
 alias grep="grep --color=auto"
 
+alias sysmonitor="watch --color -t -n 1 sysmonitor.sh"
 
 alias update="sudo informant read && yay -Syu && sudo checkrebuild && (pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq) || echo '✨ System clean, no orphans found.')"
 
@@ -40,6 +43,5 @@ eval "$(starship init zsh)"
 
 # Lancia fastfetch all'avvio della shell
 fastfetch
-
 
 export PATH=$PATH:/home/Andrea/.spicetify

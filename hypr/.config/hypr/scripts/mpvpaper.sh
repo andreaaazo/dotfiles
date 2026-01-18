@@ -2,7 +2,7 @@
 
 killall mpvpaper 2>/dev/null
 
-VIDEO_PATH="$HOME/Pictures/Wallpapers/soldier_roses.mp4"
+VIDEO_PATH="$HOME/Pictures/Wallpapers/black_hole_purple.mp4"
 
 MONITOR="*"
 

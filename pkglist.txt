@@ -7,6 +7,7 @@ fastfetch
 fwupd
 git
 google-chrome
+grim
 hyprland
 hyprpicker
 informant
@@ -39,6 +40,7 @@ rebuild-detector
 reflector
 ripgrep
 rtkit
+slurp
 snap-pac
 snapper
 sof-firmware

@@ -1,3 +1,4 @@
+alsa-firmware
 base
 base-devel
 btrfs-progs
@@ -27,6 +28,8 @@ nodejs
 nvidia-open-dkms
 nvidia-utils
 pacman-contrib
+pipewire
+pipewire-alsa
 python-pip
 python-yaml
 qt5-wayland
@@ -34,14 +37,17 @@ qt6-wayland
 rebuild-detector
 reflector
 ripgrep
+rtkit
 snap-pac
 snapper
+sof-firmware
 starship
 stow
 tree
 ttf-jetbrains-mono-nerd
 ufw
 unzip
+wireplumber
 wl-clipboard
 woff2-font-awesome
 yay

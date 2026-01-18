@@ -41,6 +41,8 @@ rtkit
 snap-pac
 snapper
 sof-firmware
+spicetify-cli
+spotify
 starship
 stow
 tree

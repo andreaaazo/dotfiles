@@ -41,3 +41,5 @@ eval "$(starship init zsh)"
 # Lancia fastfetch all'avvio della shell
 fastfetch
 
+
+export PATH=$PATH:/home/Andrea/.spicetify

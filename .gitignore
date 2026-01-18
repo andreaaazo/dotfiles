@@ -1,0 +1,3 @@
+ssh/.ssh/id_*
+ssh/.ssh/*.pub
+ssh/.ssh/github_andrea*

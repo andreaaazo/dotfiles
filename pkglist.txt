@@ -47,6 +47,7 @@ spotify
 starship
 stow
 tree
+ttf-apple-emoji
 ttf-jetbrains-mono-nerd
 ufw
 unzip

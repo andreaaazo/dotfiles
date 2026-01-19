@@ -9,6 +9,7 @@ git
 google-chrome
 grim
 hyprland
+hyprpaper
 hyprpicker
 informant
 intel-ucode
@@ -22,7 +23,6 @@ linux-lts
 linux-lts-headers
 lua51
 luarocks
-mpvpaper
 neovim
 networkmanager
 nodejs

@@ -16,6 +16,7 @@ intel-ucode
 kitty
 less
 lib32-nvidia-utils
+libva-nvidia-driver
 linux
 linux-firmware
 linux-headers
@@ -53,6 +54,7 @@ ttf-apple-emoji
 ttf-jetbrains-mono-nerd
 ufw
 unzip
+vulkan-tools
 wireplumber
 wl-clipboard
 woff2-font-awesome

@@ -6,6 +6,7 @@ egl-wayland
 fastfetch
 fwupd
 git
+glfw
 google-chrome
 grim
 hyprland
@@ -13,6 +14,7 @@ hyprpaper
 hyprpicker
 informant
 intel-ucode
+jdk21-openjdk
 kitty
 less
 lib32-nvidia-utils
@@ -34,6 +36,7 @@ openssh
 pacman-contrib
 pipewire
 pipewire-alsa
+prismlauncher
 python-pip
 python-yaml
 qt5-wayland
@@ -60,6 +63,7 @@ wireplumber
 wl-clipboard
 woff2-font-awesome
 yay
+zenity
 zram-generator
 zsh
 zsh-autosuggestions

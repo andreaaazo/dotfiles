@@ -76,5 +76,12 @@ vim.lsp.config("lua_ls", {
   },
 })
 
-local servers = { "html", "cssls", "yamlls", "lua_ls", "pyright", "ruff" }
+vim.lsp.config("clangd", {
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  },
+})
+
+local servers = { "html", "cssls", "yamlls", "lua_ls", "pyright", "ruff", "clangd" }
 vim.lsp.enable(servers)

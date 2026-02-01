@@ -5,6 +5,8 @@ local options = {
     yaml = { "prettier" },
     yml = { "prettier" },
     python = { "ruff_organize_imports", "ruff_fix", "black" },
+    c = { "clang-format" },
+    cpp = { "clang-format" },
   },
 
   formatters = {
@@ -18,6 +20,11 @@ local options = {
       prepend_args = {
         "--config-path",
         vim.fn.expand("~/.config/stylua/stylua.toml"),
+      },
+    },
+    ["clang-format"] = {
+      prepend_args = {
+        "-style=file:" .. vim.fn.expand("~/.config/clang-format/.clang-format"),
       },
     },
   },

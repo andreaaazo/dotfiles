@@ -29,6 +29,7 @@ luarocks
 neovim
 networkmanager
 nodejs
+npm
 nvidia-open-dkms
 nvidia-utils
 openrgb

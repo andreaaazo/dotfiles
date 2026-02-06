@@ -6,6 +6,7 @@ btrfs-progs
 egl-wayland
 exfatprogs
 fastfetch
+figma-linux
 fwupd
 git
 glfw
@@ -17,6 +18,7 @@ hyprpicker
 informant
 intel-ucode
 jdk21-openjdk
+jq
 kitty
 less
 lib32-nvidia-utils

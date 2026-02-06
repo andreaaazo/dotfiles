@@ -40,4 +40,9 @@ return {
       require("configs.lint")
     end,
   },
+
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
+  },
 }

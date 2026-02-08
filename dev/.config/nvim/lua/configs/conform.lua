@@ -7,6 +7,9 @@ local options = {
     python = { "ruff_organize_imports", "ruff_fix", "black" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    html = { "prettier" },
+    markdown = { "prettier" },
+    css = { "prettier" },
   },
 
   formatters = {

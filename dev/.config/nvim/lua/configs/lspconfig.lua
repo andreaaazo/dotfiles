@@ -83,5 +83,9 @@ vim.lsp.config("clangd", {
   },
 })
 
-local servers = { "html", "cssls", "yamlls", "lua_ls", "pyright", "ruff", "clangd" }
+vim.lsp.config("hyprls", {
+
+})
+
+local servers = { "html", "cssls", "yamlls", "lua_ls", "pyright", "ruff", "clangd", "hyprls" }
 vim.lsp.enable(servers)

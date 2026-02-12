@@ -1,10 +1,13 @@
 alsa-firmware
 base
 base-devel
+btop
 btrfs-progs
+cmake
 egl-wayland
 exfatprogs
 fastfetch
+figma-agent-linux-bin
 fwupd
 git
 glfw

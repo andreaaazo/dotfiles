@@ -83,9 +83,22 @@ vim.lsp.config("clangd", {
   },
 })
 
-vim.lsp.config("hyprls", {
+vim.lsp.config("hyprls", {})
 
+vim.lsp.config("neocmakelsp", {
+  cmd = { "neocmakelsp", "stdio" },
+  filetypes = { "cmake" },
+  single_file_support = true,
+  init_options = {
+    format = {
+      enable = false,
+    },
+    lint = {
+      enable = true,
+    },
+    scan_cmake_in_package = true,
+  },
 })
 
-local servers = { "html", "cssls", "yamlls", "lua_ls", "pyright", "ruff", "clangd", "hyprls" }
+local servers = { "html", "cssls", "yamlls", "lua_ls", "pyright", "ruff", "clangd", "hyprls", "neocmakelsp" }
 vim.lsp.enable(servers)

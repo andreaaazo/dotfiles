@@ -10,6 +10,7 @@ local options = {
     html = { "prettier" },
     markdown = { "prettier" },
     css = { "prettier" },
+    cmake = { "gersemi" },
   },
 
   formatters = {
@@ -30,6 +31,11 @@ local options = {
         "-style=file:" .. vim.fn.expand("~/.config/clang-format/.clang-format"),
       },
     },
+    gersemi = {
+            command = "gersemi",
+            args = { "-" },
+            stdin = true,
+        }
   },
 
   format_on_save = {

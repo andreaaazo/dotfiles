@@ -9,6 +9,7 @@ exfatprogs
 fastfetch
 figma-agent-linux-bin
 fwupd
+gdb
 git
 glfw
 google-chrome
